@@ -1,0 +1,26 @@
+<div style="max-width: 400px; margin: 50px auto; font-family: Arial, sans-serif;">
+    <h2>Iniciar Sesión</h2>
+
+    <div *ngIf="errorMensaje" style="color: red; margin-bottom: 10px;">
+        {{ errorMensaje }}
+    </div>
+
+    <form (ngSubmit)="iniciarSesion()">
+        <div style="margin-bottom: 15px;">
+            <label>Correo electrónico:</label><br>
+            <input type="email" [(ngModel)]="email" name="email" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Contraseña:</label><br>
+            <input type="password" [(ngModel)]="password" name="password" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <button type="submit"
+            style="width: 100%; padding: 10px; background: #28a745; color: white; border: none;">Entrar</button>
+    </form>
+
+    <p style="margin-top: 15px; text-align: center;">
+        ¿No tienes cuenta? <a routerLink="/registro">Regístrate aquí</a>
+    </p>
+</div>

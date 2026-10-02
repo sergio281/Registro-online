@@ -1,0 +1,13 @@
+<div style="max-width: 600px; margin: 50px auto; font-family: Arial, sans-serif; text-align: center;">
+    <h1>¡Bienvenido a la aplicación!</h1>
+
+    <div *ngIf="perfil" style="background: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h3>Tus datos de perfil:</h3>
+        <p><strong>Nombre:</strong> {{ perfil.nombre }}</p>
+        <p><strong>Correo:</strong> {{ perfil.email }}</p>
+    </div>
+
+    <button (click)="salir()"
+        style="padding: 10px 20px; background: #dc3545; color: white; border: none; cursor: pointer;">Cerrar
+        Sesión</button>
+</div>
