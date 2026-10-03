@@ -1,30 +1,33 @@
 <div style="max-width: 400px; margin: 50px auto; font-family: Arial, sans-serif;">
-  <h2>Registro de Usuario</h2>
-  
-  <div *ngIf="errorMensaje" style="color: red; margin-bottom: 10px;">
-    {{ errorMensaje }}
-  </div>
+    <h2>Registro de Usuario</h2>
 
-  <form (ngSubmit)="registrarse()">
-    <div style="margin-bottom: 15px;">
-      <label>Nombre:</label><br>
-      <input type="text" [(ngModel)]="nombre" name="nombre" required style="width: 100%; padding: 8px;">
-    </div>
+    <!-- Conectamos el formulario con el FormGroup del TypeScript -->
+    <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
 
-    <div style="margin-bottom: 15px;">
-      <label>Correo electrónico:</label><br>
-      <input type="email" [(ngModel)]="email" name="email" required style="width: 100%; padding: 8px;">
-    </div>
+        <div style="margin-bottom: 15px;">
+            <label>Nombre:</label><br>
+            <input type="text" formControlName="nombre" style="width: 100%; padding: 8px;">
+        </div>
 
-    <div style="margin-bottom: 15px;">
-      <label>Contraseña:</label><br>
-      <input type="password" [(ngModel)]="password" name="password" required style="width: 100%; padding: 8px;">
-    </div>
+        <div style="margin-bottom: 15px;">
+            <label>Correo electrónico:</label><br>
+            <input type="email" formControlName="email" style="width: 100%; padding: 8px;">
+            <!-- Opcional: un pequeño aviso si el correo no cumple el formato institucional -->
+            <small *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched" style="color: red;">
+                Debe ser un correo institucional válido (ej: @ucaldas.edu.co)
+            </small>
+        </div>
 
-    <button type="submit" style="width: 100%; padding: 10px; background: #007bff; color: white; border: none;">Registrarse</button>
-  </form>
+        <div style="margin-bottom: 15px;">
+            <label>Contraseña:</label><br>
+            <input type="password" formControlName="password" style="width: 100%; padding: 8px;">
+        </div>
 
-  <p style="margin-top: 15px; text-align: center;">
-    ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión aquí</a>
-  </p>
+        <button type="submit"
+            style="width: 100%; padding: 10px; background: #007bff; color: white; border: none;">Registrarse</button>
+    </form>
+
+    <p style="margin-top: 15px; text-align: center;">
+        ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión aquí</a>
+    </p>
 </div>
